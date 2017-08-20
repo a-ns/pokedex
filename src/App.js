@@ -50,32 +50,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-    // if(!this.state.data){
-    //   return (
-    //     <div className="App">
-    //       <div className="App-header">
-    //         <img src={logo} className="App-logo" alt="logo" />
-    //         <h2>Welcome to React</h2>
-    //         <div>Loading ...</div>
-    //       </div>
-    //       <p className="App-intro">
-    //         To get started, edit <code>src/App.js</code> and save to reload.
-    //       </p>
-    //     </div>
-    //   )
-    // };
-    // return (
-    //   <div className="App">
-    //     <div className="App-header">
-    //       <img src={logo} className="App-logo" alt="logo" />
-    //       <h2>Welcome to React</h2>
-    //       <div></div>
-    //     </div>
-    //     <p className="App-intro">
-    //       To get started, edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <Pokedex pokemon={this.state.data.results} BASE_URL/>
-    //   </div>
-    // )
