@@ -1,0 +1,81 @@
+import React, { Component } from 'react';
+import { Link , Switch, Route} from 'react-router-dom'
+import logo from './logo.svg';
+import './App.css';
+import Pokedex from './Pokedex/presenter'
+import Home from './components/Home'
+import Nav from './components/Nav'
+import PokemonDetailed from './Pokemon/detailed'
+const BASE_URL = 'http://www.pokeapi.co/api/v2/'
+
+
+
+
+class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      data: undefined
+    }
+  }
+
+  fetchAllPokemon() {
+    return fetch(`${BASE_URL}pokemon/`).then(res => res.json())
+  }
+  
+  componentDidMount() {
+    this.fetchAllPokemon().then(data => this.setState({data}))
+  }
+
+
+
+  render() {
+    return(
+      <div>
+        <Nav />
+        <main>
+          <Switch>
+            <Route exact path='/' component={() => {
+              if(!this.state.data) {
+                return <div>Loading...</div>
+              }
+              return <Pokedex pokemon={this.state.data.results} />
+            }} />
+            <Route exact path='/:pokemon' component={PokemonDetailed} />
+          </Switch>
+        </main>
+      </div>
+    )
+  }
+}
+
+export default App;
+
+
+    // if(!this.state.data){
+    //   return (
+    //     <div className="App">
+    //       <div className="App-header">
+    //         <img src={logo} className="App-logo" alt="logo" />
+    //         <h2>Welcome to React</h2>
+    //         <div>Loading ...</div>
+    //       </div>
+    //       <p className="App-intro">
+    //         To get started, edit <code>src/App.js</code> and save to reload.
+    //       </p>
+    //     </div>
+    //   )
+    // };
+    // return (
+    //   <div className="App">
+    //     <div className="App-header">
+    //       <img src={logo} className="App-logo" alt="logo" />
+    //       <h2>Welcome to React</h2>
+    //       <div></div>
+    //     </div>
+    //     <p className="App-intro">
+    //       To get started, edit <code>src/App.js</code> and save to reload.
+    //     </p>
+    //     <Pokedex pokemon={this.state.data.results} BASE_URL/>
+    //   </div>
+    // )
