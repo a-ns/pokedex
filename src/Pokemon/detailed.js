@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class PokemonDetailed extends Component {
-
-    render() {
-        console.log(this.props)
-        return (
-            <div>
-                {this.props.match.params.pokemon}
-            </div>
-        )
-    }
+const PokemonDetailed = (props) => {
+    return (
+        <div>
+            {props.match.params.pokemon}
+        </div>
+    )
 }
 
 export default PokemonDetailed

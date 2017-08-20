@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { Link , Switch, Route} from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
-import Pokedex from './Pokedex/presenter'
+import Pokedex from './Pokedex/'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import PokemonDetailed from './Pokemon/detailed'
 const BASE_URL = 'http://www.pokeapi.co/api/v2/'
-
-
 
 
 class App extends Component {
