@@ -1,4 +1,3 @@
-import {combineReducers} from 'redux'
 import Pokedex from 'pokedex-promise-v2'
 import {
     ALL_POKEMON_REQ,
@@ -56,15 +55,5 @@ const rootReducer = (state = initialState, action) => {
         }
     }
 };
-
-const pokemonReducer = (state, action) => {
-    const { type, payload } = action
-
-    switch (type) {
-        default: {
-            return state;
-        }
-    }
-}
 
 export default rootReducer;

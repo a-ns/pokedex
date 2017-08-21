@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Link , Switch, Route} from 'react-router-dom'
-import { connect } from 'react-redux'
+import { Switch, Route} from 'react-router-dom'
 import Pokedex from './Pokedex/'
-import Home from './components/Home'
 import Nav from './components/Nav'
 import PokemonDetailed from './Pokemon/detailed'
 

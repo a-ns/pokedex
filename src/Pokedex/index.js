@@ -3,10 +3,6 @@ import Pokemon from '../Pokemon/'
 import { connect } from 'react-redux'
 
 import Loading from '../components/Loading'
-import {
-  fetchAllPokemon,
-} from '../redux/actions/pokemon'
-const BASE_URL = 'http://www.pokeapi.co/api/v2/'
 
 class Pokedex extends Component {
 
