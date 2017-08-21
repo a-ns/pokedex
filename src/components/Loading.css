@@ -1,0 +1,16 @@
+.Loading {
+    animation: rotate infinite 2s ease;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}

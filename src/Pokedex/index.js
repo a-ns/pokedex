@@ -2,24 +2,26 @@ import React, {Component} from 'react'
 import Pokemon from '../Pokemon/'
 import { connect } from 'react-redux'
 
+import Loading from '../components/Loading'
 import {
   fetchAllPokemon,
 } from '../redux/actions/pokemon'
 const BASE_URL = 'http://www.pokeapi.co/api/v2/'
 
-
 class Pokedex extends Component {
 
-  componentDidMount() {
-    this.props.fetchAll()
-  }
-  renderPokemon(pokemon, i) {
+  renderPokemon(pokemon) {
+    const urlSplit = pokemon.url.split('/')
+    const dexnum = urlSplit[urlSplit.length - 2]
     return (
-      <Pokemon key={i} name={pokemon.name} url={pokemon.url} />
+      <Pokemon key={dexnum} dexnum={dexnum} name={pokemon.name} url={pokemon.url} />
     )
   }
 
   render () {
+    if(!this.props.pokemon){
+      return <Loading />
+    }
     return (
       <div style={{margin: '0 auto', width: '60%'}}>
         {this.props.pokemon.map(this.renderPokemon)}
@@ -34,12 +36,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchAll: () => {
-      dispatch(fetchAllPokemon())
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Pokedex)
+export default connect(mapStateToProps, null)(Pokedex)

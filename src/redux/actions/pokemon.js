@@ -1,10 +1,5 @@
-
-
-
-
-
-
-
+import Pokedex from 'pokedex-promise-v2'
+const p = new Pokedex()
 const BASE_URL = 'http://www.pokeapi.co/api/v2/'
 
 export const ALL_POKEMON_REQ = 'ALL_POKEMON_REQ'
@@ -30,16 +25,17 @@ export const allPokemonFail = (err) => {
     }
 }
 
-export const fetchAllPokemon = () => {
+export const fetchAllPokemon = (offset) => {
     return (dispatch) => {
         dispatch(allPokemonReq())
-        return fetch(`${BASE_URL}pokemon/`)
+        return fetch(`${BASE_URL}pokemon/?offset=${offset}`)
             .then(
                 response => response.json(),
                 error => console.log('Error, ', error),
             )
             .then(
-                json => dispatch(allPokemonSuc(json))
+                json => dispatch(allPokemonSuc(json)),
+                error => console.log('Error, ', error),
             )
     }
 }
@@ -68,16 +64,20 @@ export const onePokemonSuc = (pokemon) => {
 }
 
 
-export const fetchOnePokemon = (url) => {
+export const fetchOnePokemon = (pokemonName) => {
     return (dispatch) => {
         dispatch(onePokemonReq())
-        return fetch(`${url}`)
-            .then(
-                response => response.json(),
-                error => console.log('Error, ', error),
-            )
-            .then(
-                json => dispatch(onePokemonSuc(json))
-            )
+        return p.getPokemonByName(pokemonName)
+            .then(response => {
+                dispatch(onePokemonSuc(response))
+            })
+        // return fetch(`${url}`)
+        //     .then(
+        //         response => response.json(),
+        //         error => console.log('Error, ', error),
+        //     )
+        //     .then(
+        //         json => dispatch(onePokemonSuc(json))
+        //     )
     }
 }

@@ -7,6 +7,11 @@ import registerServiceWorker from './registerServiceWorker';
 import makeStore from './redux/store'
 import { Provider } from 'react-redux'
 
+import {
+  fetchAllPokemon,
+} from './redux/actions/pokemon'
+
+
 const store = makeStore()
 
 
@@ -18,3 +23,8 @@ ReactDOM.render(
     </Provider>, 
     document.getElementById('root'));
 registerServiceWorker();
+
+store.dispatch(fetchAllPokemon(0))
+
+
+

@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+import Pokedex from 'pokedex-promise-v2'
 import {
     ALL_POKEMON_REQ,
     ALL_POKEMON_SUC,
@@ -8,9 +9,11 @@ import {
     ONE_POKEMON_SUC,
 } from '../actions/pokemon'
 
+
 const initialState = {
     isFetching: false,
-    items: []
+    items: [],
+    pokedexAPI: new Pokedex()
 }
 
 const rootReducer = (state = initialState, action) => {
