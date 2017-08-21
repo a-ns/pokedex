@@ -8,7 +8,6 @@ import {
     ONE_POKEMON_SUC,
 } from '../actions/pokemon'
 
-
 const initialState = {
     isFetching: false,
     items: [],

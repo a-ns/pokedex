@@ -28,7 +28,10 @@ export const allPokemonFail = (err) => {
 export const fetchAllPokemon = (offset) => {
     return (dispatch) => {
         dispatch(allPokemonReq())
-        return fetch(`${BASE_URL}pokemon/?offset=${offset}`)
+        if (/* is cached */false) {
+
+        }
+        else return fetch(`${BASE_URL}pokemon/?offset=${offset}`)
             .then(
                 response => response.json(),
                 error => console.log('Error, ', error),
@@ -65,9 +68,12 @@ export const onePokemonSuc = (pokemon) => {
 
 
 export const fetchOnePokemon = (pokemonName) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         dispatch(onePokemonReq())
-        return p.getPokemonByName(pokemonName)
+        if (/* is cached */ getState()[pokemonName]) {
+            console.log('found it')
+        }
+        else return p.getPokemonByName(pokemonName)
             .then(response => {
                 dispatch(onePokemonSuc(response))
             })
