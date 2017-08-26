@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import Loading from '../components/Loading'
+import Loading from '../../components/Loading'
 import {
     fetchOnePokemon
-} from '../redux/actions/pokemon'
+} from '../../redux/actions/pokemon'
 
 import './detailed.css'
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Pokemon from '../Pokemon/'
+import Pokemon from '../Pokemon/glance'
 import { connect } from 'react-redux'
 
 import Loading from '../components/Loading'
