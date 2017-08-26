@@ -1,6 +1,10 @@
 import Pokedex from 'pokedex-promise-v2'
-const p = new Pokedex()
-const BASE_URL = 'http://www.pokeapi.co/api/v2/'
+const p = new Pokedex({
+    protocol: 'https',
+    cacheLimit: 10000 * 1000,
+})
+
+const BASE_URL = 'https://www.pokeapi.co/api/v2/'
 
 export const ALL_POKEMON_REQ = 'ALL_POKEMON_REQ'
 export const allPokemonReq = () => {
@@ -72,7 +76,7 @@ export const fetchOnePokemon = (pokemonName) => {
     return (dispatch, getState) => {
         dispatch(onePokemonReq(pokemonName))
         if (/* is cached */ !getState().detailed[pokemonName].isFetching) {
-            
+
         }
         else return p.getPokemonByName(pokemonName)
             .then(response => {
