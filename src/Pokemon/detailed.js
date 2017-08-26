@@ -13,20 +13,17 @@ class PokemonDetailed extends React.Component { // props.match.params.pokemon St
         this.props.fetchOnePoke(this.props.match.params.pokemon)
     }
     render() {
-        const pokemon = this.props.pokemon
-
-        if(!pokemon) {
-            return (
-                    <Loading />
-            )
-        }
-
-        const { stats, moves, types, weight, id } = this.props.pokemon
+        let pokemon = this.props.pokemon
+        if( !pokemon || pokemon.isFetching )
+            return <Loading />
+        pokemon = this.props.pokemon.data
+        const { stats, moves, types, weight, id } = pokemon
         return (
             <div className='detailed-container'>
-                {console.log(pokemon)}
                 <div style={{padding: '15px'}}>{stats.map((stat, i) => <div key={i}>{stat.base_stat} {stat.stat.name}</div>)}</div>
-                <img src={pokemon.sprites.front_default} alt={pokemon.name + '_front_default'} />
+                <div>
+                    <img src={pokemon.sprites.front_default} alt={pokemon.name + '_front_default'} />
+                </div>
             </div>
         )
     }
@@ -34,7 +31,7 @@ class PokemonDetailed extends React.Component { // props.match.params.pokemon St
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        pokemon: state[ownProps.match.params.pokemon]
+        pokemon: state.detailed[ownProps.match.params.pokemon]
     }
 }
 

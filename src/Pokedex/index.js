@@ -28,7 +28,7 @@ class Pokedex extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    pokemon: state.items
+    pokemon: state.glance.items
   }
 }
 

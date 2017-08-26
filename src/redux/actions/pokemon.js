@@ -44,9 +44,10 @@ export const fetchAllPokemon = (offset) => {
 }
 
 export const ONE_POKEMON_REQ = 'ONE_POKEMON_REQ'
-export const onePokemonReq = () => {
+export const onePokemonReq = (name) => {
     return {
         type: ONE_POKEMON_REQ,
+        payload: name
     }
 }
 
@@ -69,9 +70,9 @@ export const onePokemonSuc = (pokemon) => {
 
 export const fetchOnePokemon = (pokemonName) => {
     return (dispatch, getState) => {
-        dispatch(onePokemonReq())
-        if (/* is cached */ getState()[pokemonName]) {
-            console.log('found it')
+        dispatch(onePokemonReq(pokemonName))
+        if (/* is cached */ !getState().detailed[pokemonName].isFetching) {
+            
         }
         else return p.getPokemonByName(pokemonName)
             .then(response => {
