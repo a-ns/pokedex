@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Input, Menu } from "semantic-ui-react";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,8 +15,8 @@ class App extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log("here", e.target);
-    this.props.history.push(`/${this.state.searchValue}`);
+    const searchValue = this.state.searchValue.toLowerCase();
+    this.props.history.push(`/${searchValue}`);
     this.setState({ searchValue: "" });
   }
 
@@ -23,17 +25,24 @@ class App extends Component {
   }
   render() {
     return [
-      <nav key="1">
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="Enter pokemon"
-            type="text"
-            value={this.state.searchValue}
-            onChange={this.handleChange}
-          />
-        </form>
-      </nav>,
-      <main key="2">{this.props.children}</main>
+      <Menu key="1" borderless>
+        <Menu.Item>
+          <Link to="/">Home</Link>
+        </Menu.Item>
+        <div style={{ margin: "0 auto" }}>
+          <Menu.Item>
+            <form onSubmit={this.handleSubmit}>
+              <Input
+                placeholder="Something like Pikachu"
+                type="text"
+                value={this.state.searchValue}
+                onChange={this.handleChange}
+              />
+            </form>
+          </Menu.Item>
+        </div>
+      </Menu>,
+      <main key="3">{this.props.children}</main>
     ];
   }
 }

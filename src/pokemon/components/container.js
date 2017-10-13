@@ -24,12 +24,7 @@ class Container extends React.Component {
     if (this.props.pokemon.isFetching) {
       return <div>Loading</div>;
     }
-    return [
-      <Link key="1" to="/">
-        Home
-      </Link>,
-      <Presentation key="2" pokemon={this.props.pokemon} />
-    ];
+    return [<Presentation key="1" pokemon={this.props.pokemon} />];
   }
 }
 

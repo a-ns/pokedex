@@ -34,9 +34,15 @@ export const fetchPokemonByName = name => {
   return (dispatch, getStore) => {
     if (shouldFetchPokemonByName(getStore(), name)) {
       dispatch(requestPokemonByName(name));
-      return getStore()
-        .api.getPokemonByName(name)
-        .then(pokemon => {
+      return Promise.all([
+        getStore().api.getPokemonByName(name),
+        getStore().api.getPokemonSpeciesByName(name)
+      ])
+        .then(values => {
+          const pokemon = {
+            ...values[0],
+            ...values[1]
+          };
           dispatch(addPokemon(pokemon));
         })
         .catch(() => {
