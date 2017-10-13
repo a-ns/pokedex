@@ -1,3 +1,3 @@
 import Container from "./container";
-const Pokemon = Container;
+let Pokemon = Container;
 export default Pokemon;

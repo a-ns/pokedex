@@ -1,10 +1,3 @@
-/*
-    {
-        [pokemon]: {},
-        api
-    }
-*/
-
 const addPokemon = pokemon => {
   return {
     type: "ADD_POKEMON",
@@ -32,6 +25,7 @@ const requestFailurePokemonByName = name => {
 const shouldFetchPokemonByName = (state, name) => {
   const pokemon = state.pokemon[name];
   if (!pokemon) return true;
+  if (pokemon && !pokemon.isFetching) return false;
   if (pokemon.isFetching) return false;
   return true;
 };
