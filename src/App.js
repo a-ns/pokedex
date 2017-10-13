@@ -1,23 +1,30 @@
-import React, { Component } from 'react';
-import { Switch, Route} from 'react-router-dom'
-import Pokedex from './Pokedex/'
-import Nav from './components/Nav'
-import PokemonDetailed from './Pokemon/detailed'
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { connect } from "react-redux";
+import { Route, Switch } from "react-router-dom";
+import Pokemon from "./pokemon/components/";
 
 class App extends Component {
   render() {
-    return(
-      <div>
-        <Nav />
-        <main>
-          <Switch>
-            <Route exact path='/' component={Pokedex} />
-            <Route exact path='/:pokemon' component={PokemonDetailed} />
-          </Switch>
-        </main>
-      </div>
-    )
+    return (
+      <main>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => <div>goto /:pokemon ie. /charizard</div>}
+          />
+          <Route exact path="/:pokemon" component={Pokemon} />
+        </Switch>
+      </main>
+    );
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    pokemon: state.pokemon
+  };
+};
+export default connect(mapStateToProps)(App);
