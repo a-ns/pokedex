@@ -1,4 +1,4 @@
-const addPokemon = pokemon => {
+export const addPokemon = pokemon => {
   return {
     type: "ADD_POKEMON",
     payload: {
@@ -15,14 +15,14 @@ export const requestPokemonByName = name => {
   };
 };
 
-const requestFailurePokemonByName = name => {
+export const requestFailurePokemonByName = name => {
   return {
     type: "FETCH_POKEMON_FAIL",
     payload: name
   };
 };
 
-const shouldFetchPokemonByName = (state, name) => {
+export const shouldFetchPokemonByName = (state, name) => {
   const pokemon = state.pokemon[name];
   if (!pokemon) return true;
   if (pokemon.isFetching) return false;
