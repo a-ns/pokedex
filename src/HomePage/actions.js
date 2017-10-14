@@ -1,10 +1,10 @@
-const requestNextPage = () => {
+export const requestNextPage = () => {
   return {
     type: "FETCH_NEXT_PAGE_START"
   };
 };
 
-const addNextPage = pokemon => {
+export const addNextPage = pokemon => {
   return {
     type: "ADD_NEXT_PAGE",
     payload: pokemon

@@ -5,14 +5,12 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 
 import { Provider } from "react-redux";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import configureStore from "./redux/store";
 import Pokemon from "./pokemon/components";
-import { loadState, saveState } from "./redux/statePersist";
 import "semantic-ui-css/semantic.min.css";
-
 import HomePage from "./HomePage/components";
-let store = configureStore(loadState());
+let store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>

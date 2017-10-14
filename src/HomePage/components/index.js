@@ -8,10 +8,6 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
   }
-
-  componentDidMount() {
-    if (this.props.page < 2) this.props.fetchNextPage();
-  }
   render() {
     const pokemon = this.props.pokemon;
     return (
@@ -23,10 +19,8 @@ class HomePage extends React.Component {
       >
         <List style={{ margin: "0 auto", width: "60%" }}>
           {pokemon.map(pokemon => (
-            <List.Item>
-              <Link key={pokemon.name} to={"/" + pokemon.name}>
-                {pokemon.name}
-              </Link>
+            <List.Item key={pokemon.name}>
+              <Link to={"/" + pokemon.name}>{pokemon.name}</Link>
             </List.Item>
           ))}
         </List>

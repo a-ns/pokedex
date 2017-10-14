@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   pokemon: [],
   baseURL: "https://pokeapi.co/api/v2/pokemon/?offset=",
   page: 0

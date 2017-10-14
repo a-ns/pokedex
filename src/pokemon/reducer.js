@@ -9,7 +9,7 @@ const reducer = (state = {}, action) => {
           isFetching: true,
           didInvalidate: false,
           lastUpdated: Date.now(),
-          data: {}
+          data: undefined
         }
       };
     }

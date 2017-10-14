@@ -25,8 +25,8 @@ const requestFailurePokemonByName = name => {
 const shouldFetchPokemonByName = (state, name) => {
   const pokemon = state.pokemon[name];
   if (!pokemon) return true;
-  if (pokemon && !pokemon.isFetching) return false;
   if (pokemon.isFetching) return false;
+  if (pokemon.data) return false;
   return true;
 };
 
