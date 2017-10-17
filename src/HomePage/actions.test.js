@@ -2,9 +2,16 @@ import { requestNextPage, addNextPage, fetchNextPage } from "./actions";
 
 describe("HomePage actions", () => {
   describe("requestNextPage", () => {
+    const expectedRV = {
+      type: "FETCH_NEXT_PAGE_START"
+    };
     it("should return object with type 'FETCH_NEXT_PAGE_START'", () => {
       let sut = requestNextPage();
-      expect(sut).toEqual({ type: "FETCH_NEXT_PAGE_START" });
+      expect(sut).toEqual(expectedRV);
+    });
+    it("should return object with type 'FETCH_NEXT_PAGE_START' regardless of arity", () => {
+      let sut = requestNextPage({ data: "somedata" });
+      expect(sut).toEqual(expectedRV);
     });
   });
   describe("addNextPage", () => {

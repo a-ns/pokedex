@@ -40,5 +40,16 @@ describe("HomePageReducer", () => {
       let sut = HomePageReducer(undefined, mockAction);
       expect(sut).toEqual(expectedRV);
     });
+    it("should not modify state with falsey action", () => {
+      let mockAction = undefined;
+      const mockState = {
+        page: 0,
+        pokemon: [],
+        baseURL: "https://pokeapi.co/api/v2/pokemon/?offset="
+      };
+      const expectedRV = mockState;
+      let sut = HomePageReducer(mockState, mockAction);
+      expect(sut).toEqual(expectedRV);
+    });
   });
 });

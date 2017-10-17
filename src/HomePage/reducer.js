@@ -5,6 +5,7 @@ export const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  if (!action) return state;
   const { type, payload } = action;
   switch (type) {
     case "ADD_NEXT_PAGE": {
