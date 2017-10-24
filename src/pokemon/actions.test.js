@@ -5,9 +5,9 @@ import {
   shouldFetchPokemonByName
 } from "./actions";
 
-describe("Pokemon Actions", () => {
+describe("#Pokemon Actions", () => {
   describe("addPokemon", () => {
-    it("should return an object with type: 'ADD_POKEMON' and payload of a pokemon", () => {
+    it("~should return an object with type: 'ADD_POKEMON' and payload of a pokemon", () => {
       const mockData_Pokemon = {
         name: "bulbasaur",
         otherData: {}

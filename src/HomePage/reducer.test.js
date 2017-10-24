@@ -1,18 +1,19 @@
 import HomePageReducer, { initialState } from "./reducer";
 
-describe("HomePageReducer", () => {
+describe("#HomePage Reducer", () => {
   describe("initialState", () => {
-    it("should be {pokemon: [], baseURL: 'someURL', page: 0}", () => {
-      expect(initialState).toEqual({
+    it("~should be {pokemon: [], baseURL: 'someURL', page: 0}", () => {
+      const expectedRV = {
         pokemon: [],
         baseURL: "https://pokeapi.co/api/v2/pokemon/?offset=",
         page: 0
-      });
+      };
+      expect(initialState).toEqual(expectedRV);
     });
   });
   describe("reducer", () => {
     describe("ADD_NEXT_PAGE", () => {
-      it("should add a new page", () => {
+      it("~should add a new page", () => {
         let mockAction = {
           type: "ADD_NEXT_PAGE",
           payload: [{ name: "bulbasaur" }, { name: "charmander" }]
@@ -28,7 +29,7 @@ describe("HomePageReducer", () => {
       });
     });
     describe("FETCH_NEXT_PAGE_START", () => {});
-    it("should not modify state on unexpected action type", () => {
+    it("~should not modify state on unexpected action type", () => {
       let mockAction = {
         type: "UNKNOWN_ACTION"
       };
@@ -40,7 +41,7 @@ describe("HomePageReducer", () => {
       let sut = HomePageReducer(undefined, mockAction);
       expect(sut).toEqual(expectedRV);
     });
-    it("should not modify state with falsey action", () => {
+    it("~should not modify state with falsey action", () => {
       let mockAction = undefined;
       const mockState = {
         page: 0,
