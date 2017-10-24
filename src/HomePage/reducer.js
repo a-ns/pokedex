@@ -24,5 +24,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const HomePageReducer = reducer;
-export default HomePageReducer;
+export default reducer;

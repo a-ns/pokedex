@@ -34,5 +34,4 @@ const reducer = (state = {}, action) => {
   }
 };
 
-const PokemonReducer = reducer;
-export default PokemonReducer;
+export default reducer;
