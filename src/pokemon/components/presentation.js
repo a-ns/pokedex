@@ -12,7 +12,7 @@ const Presentation = ({ pokemon }) => {
     flavor_text_entries
   } = pokemon.data;
   return (
-    <div style={{ width: "60%", margin: "0 auto" }}>
+    <div>
       {/* <Card>
               <Image src={sprites.front_default} size="small" />
               <Card.Content>
