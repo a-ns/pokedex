@@ -19,6 +19,7 @@ export const fetchNextPage = () => {
     )
       .then(res => res.json())
       .then(json => json.results)
-      .then(pokemon => dispatch(addNextPage(pokemon)));
+      .then(pokemon => dispatch(addNextPage(pokemon)))
+      .catch(err => dispatch({ type: "FETCH_ERROR", payload: { error: err } }));
   };
 };

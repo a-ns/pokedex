@@ -1,7 +1,8 @@
 export const initialState = {
   pokemon: [],
   baseURL: "https://pokeapi.co/api/v2/pokemon/?offset=",
-  page: 0
+  page: 0,
+  error: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +18,9 @@ const reducer = (state = initialState, action) => {
     case "FETCH_NEXT_PAGE_START": {
       // don't know if i need this right now
       return state;
+    }
+    case "FETCH_ERROR": {
+      return { ...state, error: payload.error };
     }
     default: {
       return state;
