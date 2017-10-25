@@ -14,7 +14,9 @@ class PokemonErrorBound extends React.Component {
   render() {
     if (this.state.didError)
       return (
-        <div style={{ margin: "0 auto", width: "60%" }}>An error occurred</div>
+        <div className="fadeIn" style={{ margin: "0 auto", width: "60%" }}>
+          An error occurred
+        </div>
       );
     else {
       return (

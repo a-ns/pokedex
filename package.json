@@ -25,5 +25,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "https-proxy": "https://pokeapi.co/"
+  "https-proxy": "https://pokeapi.co/",
+  "devDependencies": {
+    "lodash": "^4.17.4"
+  }
 }

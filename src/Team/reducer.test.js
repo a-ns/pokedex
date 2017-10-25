@@ -49,5 +49,48 @@ describe("#Team Reducer", () => {
     let expectedRV = [];
     expect(sut).toEqual(expectedRV);
   });
-  it("~should update a pokemon currently on the team", () => {});
+  it("~should update a pokemon currently on the team", () => {
+    let mockAction = {
+      type: "team/update",
+      payload: {
+        uuid: "1234",
+        data: {
+          stats: {
+            defense: 2
+          }
+        }
+      }
+    };
+
+    let sut = teamReducer(
+      [
+        {
+          name: "squirtle",
+          uuid: "1234",
+          stats: { defense: 1, hp: 1, specialAttack: 1 }
+        },
+        {
+          name: "blastoise",
+          uuid: "1111",
+          stats: { defense: 55, hp: 222, specialAttack: 44 }
+        }
+      ],
+      mockAction
+    );
+
+    let expectedRV = [
+      {
+        name: "squirtle",
+        uuid: "1234",
+        stats: { defense: 2, hp: 1, specialAttack: 1 }
+      },
+      {
+        name: "blastoise",
+        uuid: "1111",
+        stats: { defense: 55, hp: 222, specialAttack: 44 }
+      }
+    ];
+
+    expect(sut).toEqual(expectedRV);
+  });
 });

@@ -2,7 +2,6 @@ import React from "react";
 import Presentation from "./presentation";
 import { connect } from "react-redux";
 import { fetchPokemonByName } from "../actions";
-import { Link } from "react-router-dom";
 class Container extends React.Component {
   componentDidMount() {
     this.props

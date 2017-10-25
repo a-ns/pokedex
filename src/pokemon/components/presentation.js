@@ -1,7 +1,7 @@
 import React from "react";
-import { Table, Grid, Item } from "semantic-ui-react";
+import { Table, Item, Container } from "semantic-ui-react";
 const Presentation = ({ pokemon }) => {
-  const {
+  let {
     abilities,
     id,
     name,
@@ -11,16 +11,11 @@ const Presentation = ({ pokemon }) => {
     moves,
     flavor_text_entries
   } = pokemon.data;
+  flavor_text_entries = flavor_text_entries.filter(
+    entry => entry.language.name === "en"
+  );
   return (
-    <div>
-      {/* <Card>
-              <Image src={sprites.front_default} size="small" />
-              <Card.Content>
-                {types.map(type => {
-                  return <Label>{type.type.name}</Label>;
-                })}
-              </Card.Content>
-            </Card> */}
+    <div className="fadeIn">
       <Item.Group>
         <Item>
           <Item.Image size="tiny" src={sprites.front_default} />
@@ -28,7 +23,7 @@ const Presentation = ({ pokemon }) => {
             <Item.Header as="a">{name}</Item.Header>
             <Item.Meta>Pokedex Number {id}</Item.Meta>
             <Item.Description>
-              {flavor_text_entries[1].flavor_text}
+              {flavor_text_entries[0].flavor_text}
             </Item.Description>
             <Item.Extra>
               {types.map((type, i) => <span key={i}>{type.type.name}</span>)}
@@ -54,9 +49,11 @@ const Presentation = ({ pokemon }) => {
           </Table.Row>
         </Table.Body>
       </Table>
+      <Container>
+        {moves.map(move => <div key={move.move.name}>{move.move.name}</div>)}
+      </Container>
     </div>
   );
 };
 
-const Pokemon = Presentation;
-export default Pokemon;
+export default Presentation;

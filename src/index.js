@@ -10,6 +10,7 @@ import configureStore from "./redux/store";
 import Pokemon from "./pokemon/components";
 import "semantic-ui-css/semantic.min.css";
 import HomePage from "./HomePage/components";
+import "./index.css";
 let store = configureStore();
 
 ReactDOM.render(

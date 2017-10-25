@@ -5,9 +5,6 @@ import { List } from "semantic-ui-react";
 import { fetchNextPage } from "../actions";
 import InfiniteScroll from "react-infinite-scroller";
 class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const pokemon = this.props.pokemon;
     return (

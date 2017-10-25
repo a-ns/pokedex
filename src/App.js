@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Input, Menu } from "semantic-ui-react";
