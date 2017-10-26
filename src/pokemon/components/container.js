@@ -1,6 +1,7 @@
 import React from "react";
 import Presentation from "./presentation";
 import { connect } from "react-redux";
+import Loading from "../../common/Loading";
 import { fetchPokemonByName } from "../actions";
 class Container extends React.Component {
   componentDidMount() {
@@ -18,10 +19,13 @@ class Container extends React.Component {
 
   render() {
     if (!this.props.pokemon) {
-      return <div>Loading</div>;
+      return <Loading />;
     }
     if (this.props.pokemon.isFetching) {
-      return <div>Loading</div>;
+      return <Loading />;
+    }
+    if (!this.props.pokemon.data) {
+      return <Loading />;
     }
     return <Presentation pokemon={this.props.pokemon} />;
   }

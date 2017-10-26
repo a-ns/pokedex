@@ -46,7 +46,6 @@ export const fetchPokemonByName = name => {
           dispatch(addPokemon(pokemon));
         })
         .catch(() => {
-          console.error("fetch failure");
           dispatch(requestFailurePokemonByName(name));
           return Promise.reject();
         });

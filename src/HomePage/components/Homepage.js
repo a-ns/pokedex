@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { List } from "semantic-ui-react";
 import { fetchNextPage } from "../actions";
+import Loading from "../../common/Loading";
 import InfiniteScroll from "react-infinite-scroller";
 class HomePage extends React.Component {
   render() {
@@ -22,9 +23,9 @@ class HomePage extends React.Component {
         pageStart={0}
         loadMore={this.props.fetchNextPage}
         hasMore={this.props.page * 20 < 802}
-        loader={<div className="loader">Loading ...</div>}
+        loader={<Loading />}
       >
-        <List style={{ margin: "0 auto", width: "60%" }}>
+        <List>
           {pokemon.map(pokemon => (
             <List.Item key={pokemon.name}>
               <Link to={"/" + pokemon.name}>{pokemon.name}</Link>

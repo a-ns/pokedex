@@ -10,8 +10,8 @@ import configureStore from "./redux/store";
 import Pokemon from "./pokemon/components";
 import "semantic-ui-css/semantic.min.css";
 import HomePage from "./HomePage/components";
-import "./index.css";
-let store = configureStore();
+import { loadState } from "./util/serializeState";
+let store = configureStore(loadState());
 
 ReactDOM.render(
   <Provider store={store}>

@@ -20,7 +20,11 @@ class HomepageErrorBound extends React.Component {
         <div style={{ margin: "0 auto", width: "60%" }}>An error occurred</div>
       );
     } else {
-      return <Homepage {...this.props} />;
+      return (
+        <div style={{ margin: "0 auto", width: "60%" }}>
+          <Homepage {...this.props} />
+        </div>
+      );
     }
   }
 }
