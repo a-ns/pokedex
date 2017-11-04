@@ -1,14 +1,44 @@
 @keyframes loading {
   from {
-    transform: 0;
+    transform: rotate(0deg);
   }
   to {
-    transform: rotate(1turn);
+    transform: rotate(360deg);
   }
 }
 
 .loading {
-  animation-name: loading;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  position: relative;
+  animation: 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite loading;
+}
+
+.loading-top {
+  height: 45px;
+  width: 90px;
+  border-radius: 90px 90px 0 0;
+  background-color: red;
+  position: absolute;
+  z-index: 1;
+}
+
+.loading-center-strip {
+  margin-top: 45px;
+  z-index: 2;
+  background-color: black;
+  width: 90px;
+  height: 5px;
+  position: absolute;
+}
+
+.loading-bottom {
+  margin-top: 45px;
+  z-index: 1;
+  position: absolute;
+  height: 45px;
+  width: 90px;
+  border-radius: 0 0 90px 90px;
+  background-color: #f6f6f6;
 }

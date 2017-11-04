@@ -20,6 +20,25 @@ const Intro = ({ sprites, name, id, flavor_text_entries, types }) => {
   );
 };
 
+const Move = props => {
+  const { move, version_group_details } = props.data;
+  console.log("move:", props.data);
+  return (
+    <div key={move.name} style={{ border: "2px solid black" }}>
+      <p>{move.name}</p>
+      <div>
+        {/* {version_group_details.map((version, i) => (
+          <div key={i}>
+            <span>{version.move_learn_method.name}</span>,
+            <span>{version.version_group.name}</span>
+          </div>
+        ))} */}
+        {}
+      </div>
+    </div>
+  );
+};
+
 const getTypeColor = type => {
   let backgroundColor;
   switch (type.type.name) {
@@ -166,7 +185,7 @@ const Presentation = ({ pokemon }) => {
         </Table.Body>
       </Table>
       <Container>
-        {moves.map(move => <div key={move.move.name}>{move.move.name}</div>)}
+        {moves.map(move => <Move key={move.move.name} data={move} />)}
       </Container>
     </div>
   );
