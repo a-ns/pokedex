@@ -1,9 +1,11 @@
 import Container from "./container";
 import React from "react";
+import withMargin from "../../common/withMargin";
 
 class PokemonErrorBound extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
     this.state = {
       didError: false
     };
@@ -13,18 +15,10 @@ class PokemonErrorBound extends React.Component {
   }
   render() {
     if (this.state.didError)
-      return (
-        <div className="fadeIn" style={{ margin: "0 auto", width: "60%" }}>
-          An error occurred
-        </div>
-      );
+      return <div className="fadeIn">An error occurred</div>;
     else {
-      return (
-        <div style={{ margin: "0 auto", width: "60%" }}>
-          <Container {...this.props} />
-        </div>
-      );
+      return <Container {...this.props} />;
     }
   }
 }
-export default PokemonErrorBound;
+export default withMargin(PokemonErrorBound);

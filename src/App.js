@@ -14,7 +14,7 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const searchValue = this.state.searchValue.toLowerCase();
-    this.props.history.push(`/${searchValue}`);
+    this.props.history.push(`/pokemon/${searchValue}`);
     this.setState({ searchValue: "" });
   }
 
@@ -40,7 +40,7 @@ class App extends Component {
           </Menu.Item>
         </div>
       </Menu>,
-      <main key="3">{this.props.children}</main>
+      <main key="2">{this.props.children}</main>
     ];
   }
 }

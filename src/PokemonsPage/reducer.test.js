@@ -1,9 +1,10 @@
-import HomePageReducer, { initialState } from "./reducer";
+import PokemonsPageReducer, { initialState } from "./reducer";
 
-describe("#HomePage Reducer", () => {
+describe("#PokemonsPage Reducer", () => {
   describe("initialState", () => {
     it("~should be {pokemon: [], baseURL: 'someURL', page: 0}", () => {
       const expectedRV = {
+        error: null,
         pokemon: [],
         baseURL: "https://pokeapi.co/api/v2/pokemon/?offset=",
         page: 0
@@ -18,9 +19,10 @@ describe("#HomePage Reducer", () => {
           type: "ADD_NEXT_PAGE",
           payload: [{ name: "bulbasaur" }, { name: "charmander" }]
         };
-        let sut = HomePageReducer(undefined, mockAction);
+        let sut = PokemonsPageReducer(undefined, mockAction);
 
         const expectedRV = {
+          error: null,
           page: 1,
           pokemon: [{ name: "bulbasaur" }, { name: "charmander" }],
           baseURL: "https://pokeapi.co/api/v2/pokemon/?offset="
@@ -36,9 +38,10 @@ describe("#HomePage Reducer", () => {
       const expectedRV = {
         page: 0,
         pokemon: [],
-        baseURL: "https://pokeapi.co/api/v2/pokemon/?offset="
+        baseURL: "https://pokeapi.co/api/v2/pokemon/?offset=",
+        error: null
       };
-      let sut = HomePageReducer(undefined, mockAction);
+      let sut = PokemonsPageReducer(undefined, mockAction);
       expect(sut).toEqual(expectedRV);
     });
     it("~should not modify state with falsey action", () => {
@@ -49,7 +52,7 @@ describe("#HomePage Reducer", () => {
         baseURL: "https://pokeapi.co/api/v2/pokemon/?offset="
       };
       const expectedRV = mockState;
-      let sut = HomePageReducer(mockState, mockAction);
+      let sut = PokemonsPageReducer(mockState, mockAction);
       expect(sut).toEqual(expectedRV);
     });
   });

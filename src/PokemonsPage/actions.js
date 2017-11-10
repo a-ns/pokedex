@@ -15,7 +15,7 @@ export const fetchNextPage = () => {
   return (dispatch, getStore) => {
     dispatch(requestNextPage());
     return fetch(
-      `${getStore().homepage.baseURL}${getStore().homepage.page * 20}`
+      `${getStore().pokemonsPage.baseURL}${getStore().pokemonsPage.page * 20}`
     )
       .then(res => res.json())
       .then(json => json.results)

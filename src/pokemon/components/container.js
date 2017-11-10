@@ -14,7 +14,7 @@ class Container extends React.Component {
     if (props.match.params.pokemon !== this.props.match.params.pokemon)
       this.props
         .fetchPokemonByName(props.match.params.pokemon)
-        .catch(() => this.props.history.replace("/"));
+        .catch(() => this.props.history.replace("/search-not-found"));
   }
 
   render() {

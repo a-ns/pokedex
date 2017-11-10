@@ -22,7 +22,6 @@ const Intro = ({ sprites, name, id, flavor_text_entries, types }) => {
 
 const Move = props => {
   const { move, version_group_details } = props.data;
-  console.log("move:", props.data);
   return (
     <div key={move.name} style={{ border: "2px solid black" }}>
       <p>{move.name}</p>

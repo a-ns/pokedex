@@ -1,6 +1,6 @@
 import { requestNextPage, addNextPage, fetchNextPage } from "./actions";
 
-describe("#HomePage actions", () => {
+describe("#PokemonsPage actions", () => {
   describe("requestNextPage", () => {
     const expectedRV = {
       type: "FETCH_NEXT_PAGE_START"

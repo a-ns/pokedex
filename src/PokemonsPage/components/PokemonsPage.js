@@ -5,7 +5,7 @@ import { List } from "semantic-ui-react";
 import { fetchNextPage } from "../actions";
 import Loading from "../../common/Loading";
 import InfiniteScroll from "react-infinite-scroller";
-class HomePage extends React.Component {
+class PokemonsPage extends React.Component {
   render() {
     if (this.props.error) {
       return (
@@ -28,7 +28,7 @@ class HomePage extends React.Component {
         <List>
           {pokemon.map(pokemon => (
             <List.Item key={pokemon.name}>
-              <Link to={"/" + pokemon.name}>{pokemon.name}</Link>
+              <Link to={"/pokemon/" + pokemon.name}>{pokemon.name}</Link>
             </List.Item>
           ))}
         </List>
@@ -39,9 +39,9 @@ class HomePage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    pokemon: state.homepage.pokemon,
-    page: state.homepage.page,
-    error: state.homepage.error
+    pokemon: state.pokemonsPage.pokemon,
+    page: state.pokemonsPage.page,
+    error: state.pokemonsPage.error
   };
 };
 
@@ -51,4 +51,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonsPage);
