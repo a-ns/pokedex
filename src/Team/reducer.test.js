@@ -1,7 +1,7 @@
 import teamReducer from "./reducer";
 
 describe("#Team Reducer", () => {
-  it("~Should add a new pokemon to the team", () => {
+  it("Should add a new pokemon to the team", () => {
     let action = {
       type: "team/add",
       payload: {
@@ -38,7 +38,7 @@ describe("#Team Reducer", () => {
     ];
     expect(sut).toEqual(expectedRV);
   });
-  it("~should remove a pokemon from the team", () => {
+  it("should remove a pokemon from the team", () => {
     let mockAction = {
       type: "team/remove",
       payload: {
@@ -49,7 +49,7 @@ describe("#Team Reducer", () => {
     let expectedRV = [];
     expect(sut).toEqual(expectedRV);
   });
-  it("~should update a pokemon currently on the team", () => {
+  it("should update a pokemon currently on the team", () => {
     let mockAction = {
       type: "team/update",
       payload: {

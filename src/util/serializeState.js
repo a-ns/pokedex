@@ -1,4 +1,5 @@
 export const saveState = state => {
+  state = { ...state };
   try {
     Object.keys(state.pokemon).forEach(key => {
       state.pokemon[key].isFetching = false;

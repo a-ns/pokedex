@@ -1,13 +1,25 @@
 import React from "react";
-import { Table, Item, Container } from "semantic-ui-react";
+import { Table, Item, Container, Button } from "semantic-ui-react";
 
-const Intro = ({ sprites, name, id, flavor_text_entries, types }) => {
+export const Intro = props => {
+  const { sprites, name, id, flavor_text_entries, types } = props;
   return (
     <Item.Group>
       <Item>
         <Item.Image size="tiny" src={sprites.front_default} />
         <Item.Content>
-          <Item.Header as="a">{name}</Item.Header>
+          <Item.Header style={{ display: "block" }} as="a">
+            {name}{" "}
+            {!props.uuid && (
+              <Button
+                style={{ float: "right" }}
+                onClick={props.addPokemonToTeam}
+                primary
+              >
+                Team Up!
+              </Button>
+            )}
+          </Item.Header>
           <Item.Meta>Pokedex Number {id}</Item.Meta>
           <Item.Description>
             {flavor_text_entries[0].flavor_text}
@@ -142,7 +154,7 @@ const Type = ({ types }) => {
   );
 };
 
-const Presentation = ({ pokemon }) => {
+const Presentation = ({ pokemon, addPokemonToTeam }) => {
   let {
     abilities,
     id,
@@ -153,9 +165,7 @@ const Presentation = ({ pokemon }) => {
     moves,
     flavor_text_entries
   } = pokemon.data;
-  flavor_text_entries = flavor_text_entries.filter(
-    entry => entry.language.name === "en"
-  );
+
   return (
     <div className="fadeIn">
       <Intro
@@ -164,6 +174,7 @@ const Presentation = ({ pokemon }) => {
         sprites={sprites}
         types={types}
         flavor_text_entries={flavor_text_entries}
+        addPokemonToTeam={addPokemonToTeam}
       />
       <Table celled>
         <Table.Header>

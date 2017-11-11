@@ -10,11 +10,11 @@ const reducer = (state = initialState, action) => {
       return state.filter(poke => poke.uuid !== payload.uuid);
     }
     case "team/update": {
-      state = state.map(pokemon => {
+      return (state = state.map(pokemon => {
         if (pokemon.uuid === payload.uuid)
           return _.merge(pokemon, payload.data);
         else return pokemon;
-      });
+      }));
     }
     default:
       return state;

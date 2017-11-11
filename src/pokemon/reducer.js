@@ -25,7 +25,12 @@ const reducer = (state = {}, action) => {
           isFetching: false,
           didInvalidate: false,
           lastUpdated: Date.now(),
-          data: payload.data
+          data: {
+            ...payload.data,
+            flavor_text_entries: payload.data.flavor_text_entries.filter(
+              entry => entry.language.name === "en"
+            )
+          }
         }
       };
     }

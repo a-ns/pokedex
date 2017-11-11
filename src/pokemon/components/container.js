@@ -3,11 +3,12 @@ import Presentation from "./presentation";
 import { connect } from "react-redux";
 import Loading from "../../common/Loading";
 import { fetchPokemonByName } from "../actions";
+import { addPokemonToTeam } from "../../Team/actions";
 class Container extends React.Component {
   componentDidMount() {
     this.props
       .fetchPokemonByName(this.props.match.params.pokemon)
-      .catch(() => this.props.history.replace("/"));
+      .catch(() => this.props.history.replace("/search-not-found"));
   }
 
   componentWillReceiveProps(props) {
@@ -27,7 +28,13 @@ class Container extends React.Component {
     if (!this.props.pokemon.data) {
       return <Loading />;
     }
-    return <Presentation pokemon={this.props.pokemon} />;
+    return (
+      <Presentation
+        pokemon={this.props.pokemon}
+        addPokemonToTeam={() =>
+          this.props.addPokemonToTeam(this.props.pokemon.data)}
+      />
+    );
   }
 }
 
@@ -39,7 +46,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPokemonByName: name => dispatch(fetchPokemonByName(name))
+    fetchPokemonByName: name => dispatch(fetchPokemonByName(name)),
+    addPokemonToTeam: pokemon => dispatch(addPokemonToTeam(pokemon))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Container);

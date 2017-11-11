@@ -13,10 +13,7 @@ export default function configureStore(persistedState) {
   );
   store.subscribe(
     throttle(() => {
-      saveState({
-        pokemon: store.getState().pokemon,
-        homepage: store.getState().homepage
-      });
+      saveState(store.getState());
     }),
     3000
   );

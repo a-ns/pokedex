@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Input, Menu } from "semantic-ui-react";
+import { connect } from "react-redux";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +28,13 @@ class App extends Component {
         <Menu.Item>
           <Link to="/">Home</Link>
         </Menu.Item>
+        {this.props.team.map(teamMember => {
+          return (
+            <Menu.Item key={teamMember.uuid} className="fadeIn">
+              <img src={teamMember.sprites.front_default} />
+            </Menu.Item>
+          );
+        })}
         <div style={{ margin: "0 auto" }}>
           <Menu.Item>
             <form onSubmit={this.handleSubmit}>
@@ -45,4 +53,9 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  return {
+    team: state.team
+  };
+};
+export default withRouter(connect(mapStateToProps, undefined)(App));
