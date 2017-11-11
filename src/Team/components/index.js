@@ -24,7 +24,10 @@ class Team extends React.Component {
         {this.props.team.map(pokemon => {
           return (
             <div key={pokemon.uuid} className="pokemon-teammate fadeIn">
-              <Intro {...pokemon} />
+              <Intro
+                {...pokemon}
+                removePokemonFromTeam={() => this.props.removeFromTeam(pokemon)}
+              />
             </div>
           );
         })}
