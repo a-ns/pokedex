@@ -29,7 +29,7 @@ class App extends Component {
           <Link to="/">Home</Link>
         </Menu.Item>
         <Menu.Item>
-          <Link to="team">Team</Link>
+          <Link to="/team">Team</Link>
           {this.props.team.map(teamMember => {
             return (
               <Menu.Item key={teamMember.uuid}>

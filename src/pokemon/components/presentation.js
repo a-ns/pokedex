@@ -14,23 +14,19 @@ export const Intro = props => {
             {
               <Button
                 style={{ float: "right" }}
-                onClick={
-                  props.uuid
-                    ? props.removePokemonFromTeam
-                    : props.addPokemonToTeam
-                }
+                onClick={props.addPokemonToTeam}
                 primary
               >
-                {props.uuid ? "Release" : "Team Up!"}
+                {"Team Up!"}
               </Button>
             }
           </Item.Header>
+
+          <Type types={types} />
           <Item.Meta>Pokedex Number {id}</Item.Meta>
           <Item.Description>
             {flavor_text_entries[0].flavor_text}
           </Item.Description>
-
-          <Type types={types} />
         </Item.Content>
       </Item>
     </Item.Group>
@@ -55,7 +51,7 @@ const Move = props => {
   );
 };
 
-const Type = ({ types }) => {
+export const Type = ({ types }) => {
   return (
     <Item.Extra>
       {types.map((type, i) => {
@@ -117,15 +113,17 @@ const Presentation = ({ pokemon, addPokemonToTeam }) => {
           </Table.Row>
         </Table.Body>
       </Table>
-      <Table.Body>
-        {moves.map(move => (
-          <Table.Row>
-            <Table.Cell>
-              <Move key={move.move.name} data={move} />
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table.Body>
+      <Table celled>
+        <Table.Body>
+          {moves.map(move => (
+            <Table.Row key={move.move.name}>
+              <Table.Cell>
+                <Move key={move.move.name} data={move} />
+              </Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
     </div>
   );
 };
