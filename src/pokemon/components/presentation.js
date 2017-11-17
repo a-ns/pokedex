@@ -40,7 +40,7 @@ export const Intro = props => {
 const Move = props => {
   const { move, version_group_details } = props.data;
   return (
-    <div key={move.name} style={{ border: "2px solid black" }}>
+    <div>
       <p>{move.name}</p>
       <div>
         {/* {version_group_details.map((version, i) => (
@@ -117,9 +117,15 @@ const Presentation = ({ pokemon, addPokemonToTeam }) => {
           </Table.Row>
         </Table.Body>
       </Table>
-      <Container>
-        {moves.map(move => <Move key={move.move.name} data={move} />)}
-      </Container>
+      <Table.Body>
+        {moves.map(move => (
+          <Table.Row>
+            <Table.Cell>
+              <Move key={move.move.name} data={move} />
+            </Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
     </div>
   );
 };

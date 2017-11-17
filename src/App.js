@@ -28,15 +28,16 @@ class App extends Component {
         <Menu.Item>
           <Link to="/">Home</Link>
         </Menu.Item>
-        <Link to="/team">
+        <Menu.Item>
+          <Link to="team">Team</Link>
           {this.props.team.map(teamMember => {
             return (
-              <Menu.Item key={teamMember.uuid} className="fadeIn">
+              <Menu.Item key={teamMember.uuid}>
                 <img src={teamMember.sprites.front_default} />
               </Menu.Item>
             );
           })}
-        </Link>
+        </Menu.Item>
         <div style={{ margin: "0 auto" }}>
           <Menu.Item>
             <form onSubmit={this.handleSubmit}>

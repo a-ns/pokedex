@@ -1,11 +1,11 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-
+import withMargin from "../../common/withMargin";
 class Homepage extends React.Component {
   render() {
     return (
-      <div style={{ margin: "0 auto", width: "60%" }}>
+      <div>
         <div>
           For building a team go to <Link to="/team">Team</Link>
         </div>
@@ -17,4 +17,4 @@ class Homepage extends React.Component {
   }
 }
 
-export default Homepage;
+export default withMargin(Homepage);
