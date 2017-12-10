@@ -21,7 +21,7 @@
     "uuid": "^3.1.0"
   },
   "scripts": {
-    "deploy": "npm run build && cp build/index.html build/200.html && echo \"200.html created\" &&surge build ans-pokedex.surge.sh",
+    "deploy": "npm run build && cp build/index.html build/200.html && echo \"200.html created\" && surge build ans-pokedex.surge.sh",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

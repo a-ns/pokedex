@@ -4,7 +4,16 @@ const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case "team/add": {
-      return state.concat(payload);
+      if (state.length > 5) return state;
+      let pokemon = payload;
+      pokemon.stats = pokemon.stats.map(stat => {
+        return {
+          ...stat,
+          base_stat: String(stat.base_stat),
+          current_stat: stat.base_stat
+        };
+      });
+      return state.concat(pokemon);
     }
     case "team/remove": {
       return state.filter(poke => poke.uuid !== payload.uuid);
